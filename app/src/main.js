@@ -22,7 +22,6 @@
 * @license MIT
 */
 
-
 /**
 * Rotating Box
 * ----------
@@ -78,7 +77,7 @@ define(function(require, exports, module) {
     function createBox(width, height, depth) {
         var box = new RenderNode();
 
-        function createSide(params){
+        function createSide(params) {
             var surface = new Surface({
                 size: params.size,
                 content: params.content,
@@ -91,7 +90,7 @@ define(function(require, exports, module) {
             });
 
             box.add(modifier).add(surface);
-        };
+        }
 
         // Front
         createSide({
@@ -110,7 +109,7 @@ define(function(require, exports, module) {
         // Back
         createSide({
             size: [width, height],
-            content: '<iframe width="100%" height="100%" src="http://dev.nodesphere.org/"></iframe>',
+            content: '<iframe width="100%" height="100%" src="http://nodedev-three-production.herokuapp.com/"></iframe>',
             properties: {
                 lineHeight: height + 'px',
                 textAlign: 'center',
@@ -119,7 +118,7 @@ define(function(require, exports, module) {
                 overflow: 'hidden',
                 color: '#777'
             },
-            transform: Transform.multiply(Transform.translate(0, 0, - depth / 2), Transform.multiply(Transform.rotateZ(Math.PI), Transform.rotateX(Math.PI))),
+            transform: Transform.multiply(Transform.translate(0, 0, -depth / 2), Transform.multiply(Transform.rotateZ(Math.PI), Transform.rotateX(Math.PI)))
         });
 
         // Top
@@ -133,13 +132,13 @@ define(function(require, exports, module) {
                 overflow: 'hidden',
                 color: '#666'
             },
-            transform: Transform.multiply(Transform.translate(0, -height / 2, 0), Transform.rotateX(Math.PI/2)),
+            transform: Transform.multiply(Transform.translate(0, -height / 2, 0), Transform.rotateX(Math.PI/2))
         });
 
         // Bottom
         createSide({
             size: [width, depth],
-            content: '<iframe width="100%" height="100%" src="http://nodedev-three-production.herokuapp.com/"></iframe>',
+            content: '<iframe width="100%" height="100%" src="http://bl.ocks.org/harlantwood/raw/8f486a7d5af1b72074b6/"></iframe>',
             properties: {
                 lineHeight: depth + 'px',
                 textAlign: 'center',
@@ -147,7 +146,7 @@ define(function(require, exports, module) {
                 overflow: 'hidden',
                 color: '#777'
             },
-            transform: Transform.multiply(Transform.translate(0, height / 2, 0), Transform.multiply(Transform.rotateX(-Math.PI/2), Transform.rotateZ(Math.PI))),
+            transform: Transform.multiply(Transform.translate(0, height / 2, 0), Transform.multiply(Transform.rotateX(-Math.PI/2), Transform.rotateZ(Math.PI)))
         });
 
         // Left
@@ -167,13 +166,13 @@ define(function(require, exports, module) {
         // Right
         createSide({
             size: [depth, height],
-            content: '<iframe width="100%" height="100%" src="http://bl.ocks.org/harlantwood/raw/8f486a7d5af1b72074b6/"></iframe>',
+            content: '<iframe width="100%" height="100%" src="http://dev.nodesphere.org/"></iframe>',
             properties: {
                 lineHeight: height + 'px',
                 textAlign: 'center',
                 backgroundColor: '#c0f',
                 overflow: 'hidden',
-                color: '#777',
+                color: '#777'
             },
             transform: Transform.multiply(Transform.translate(width / 2, 0, 0), Transform.rotateY(Math.PI/2))
         });
@@ -181,4 +180,3 @@ define(function(require, exports, module) {
         return box;
     }
 });
-
